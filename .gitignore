@@ -4,3 +4,4 @@
 *.ipch
 *.log
 x64/Debug/STG1.vcxproj.FileListAbsolute.txt
+*.opendb
