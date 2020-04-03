@@ -34,7 +34,7 @@ void startanime() {
 			putimage(0, 0, &white);
 			FlushBatchDraw();
 			Sleep(1000);
-			vedio[0].sprite.img[0] = &TITLE[1];
+			video[0].sprite.img[0] = &TITLE[1];
 		}
 		if (i == 58) {
 			Sleep(3000);

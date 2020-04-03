@@ -18,27 +18,27 @@
 
 //改变速度
 //（目标实体，目标速度，目标方向）
-void velocity_obj(int i, double speed, double angel)
+void velocity_obj(int i, double speed, double angle)
 {
 	object[i].velocity = speed;
-	object[i].Vangel = angel;
+	object[i].Vangle = angle;
 }
-void velocity_bul(int i, double speed, double angel)
+void velocity_bul(int i, double speed, double angle)
 {
 	bullet[i].velocity = speed;
-	bullet[i].Vangel = angel;
+	bullet[i].Vangle = angle;
 }
 
 //获得加速度
 //（目标实体，加速度，加速度方向）
-void accelerate(Object str, double speed, double angel)
+void accelerate(Object str, double speed, double angle)
 {
-	str.velocity = sqrt(pow(str.velocity, 2) + pow(speed, 2) - 2 * str.velocity * speed * cos(str.Vangel - angel + pi));
-	str.Vangel = str.Vangel + asin
+	str.velocity = sqrt(pow(str.velocity, 2) + pow(speed, 2) - 2 * str.velocity * speed * cos(str.Vangle - angle + PI));
+	str.Vangle = str.Vangle + asin
 	(
 	(
 		speed * sin(
-			str.Vangel - angel + pi
+			str.Vangle - angle + PI
 			)
 		) / str.velocity
 		);
@@ -104,14 +104,14 @@ void transparent(int i)
 //（激活的实体[绝对编号]）
 void activate_object(Object object)
 {
-	object.isused = 1;
+	object.isused = true;
 	object.NO = objno;
 	objno++;
 }
 
 //生成实体
 //（贴图编号,初始速度,初始位置x,初始位置y,初始速度角度,碰撞检测，深度，帧数）
-void create_object(int picture_number, double speed, int x, int y, double angel, int hitbox, int deep, int tstrip)
+void create_object(int picture_number, double speed, int x, int y, double angle, int hitbox, int deep, int tstrip)
 {
 	objno++;
 	int i = objno;
@@ -121,13 +121,14 @@ void create_object(int picture_number, double speed, int x, int y, double angel,
 	object[i].x = x;
 	object[i].y = y;
 	object[i].velocity = speed;
-	object[i].Vangel = angel;
+	object[i].Vangle = angle;
 	object[i].hitbox =hitbox;
 	object[i].depht = deep;
 	object[i].sprite.strip = tstrip;
 	object[objno].NO = objno;
 }//（形状类,初始速度,初始位置x,初始位置y,初始速度角度,碰撞半径，深度）
-void create_bullet(int type, double speed, int x, int y, double angel, int hitbox, int deep ,COLORREF color,int group)
+
+void create_bullet(int type, double speed, int x, int y, double angle, int hitbox, int deep ,COLORREF color,int group)
 {
 	bulno++;
 	int i = bulno;
@@ -136,7 +137,7 @@ void create_bullet(int type, double speed, int x, int y, double angel, int hitbo
 	bullet[i].x = x;
 	bullet[i].y = y;
 	bullet[i].velocity = speed;
-	bullet[i].Vangel = angel;
+	bullet[i].Vangle = angle;
 	bullet[i].hitbox = hitbox;
 	bullet[i].depht = deep;
 	bullet[i].color = color;
@@ -180,68 +181,56 @@ int hit(Object a,Bullet b)
 }
 
 //动画（动画编号，是否透明）
-void anime(int i,int j) {
+void anime(int i, int j) {
 	putimage(0, 0, &white);
-	if (vedio[i].sprite.clock == 0) {
-		vedio[i].sprite.clock = vedio[0].sprite.speed;
-		if (vedio[i].sprite.frame != vedio[0].sprite.strip)
-			vedio[i].sprite.frame++;
+	if (video[i].sprite.clock == 0) {
+		video[i].sprite.clock = video[0].sprite.speed;
+		if (video[i].sprite.frame != video[0].sprite.strip)
+			video[i].sprite.frame++;
 		else
-			vedio[i].sprite.frame = 1;
+			video[i].sprite.frame = 1;
 	}
-	IMAGE I = *vedio[i].sprite.img[0];
-	int tstrip = vedio[i].sprite.strip;
-	int tframe = vedio[i].sprite.frame;
+	IMAGE I = *video[i].sprite.img[0];
+	int tstrip = video[i].sprite.strip;
+	int tframe = video[i].sprite.frame;
 	int widt = I.getwidth() / tstrip;
 	int heig = I.getheight();
 	if (j == 0) {
 		putimage(
-			vedio[i].x - widt / 2,
-			vedio[i].y - heig / 2,
+			video[i].x - widt / 2,
+			video[i].y - heig / 2,
 			widt, heig,
-			vedio[i].sprite.img[0],
+			video[i].sprite.img[0],
 			(tframe - 1) * widt, 0);//显示图片
 
 	}
 	if (j == 1) {
 		putimage(
-			vedio[i].x - widt / 2,
-			vedio[i].y - heig / 2,
+			video[i].x - widt / 2,
+			video[i].y - heig / 2,
 			widt, heig,
-			vedio[i].sprite.img[1],
+			video[i].sprite.img[1],
 			(tframe - 1) * widt, 0,SRCAND);//显示蒙版
 		putimage(
-			vedio[i].x - widt / 2,
-			vedio[i].y - heig / 2,
+			video[i].x - widt / 2,
+			video[i].y - heig / 2,
 			widt, heig,
-			vedio[i].sprite.img[0],
+			video[i].sprite.img[0],
 			(tframe - 1) * widt, 0, SRCPAINT);//显示图片
 	}
 	
-	vedio[i].sprite.clock--;
+	video[i].sprite.clock--;
 }
 
 
 void anime_line(COLORREF col) {
 	setlinecolor(col);
-	int w = rand() % WIDTH;
-	int h = rand() % HIGH;
-	line(w, 0, w, 900);
-	w = rand() % WIDTH;
-	h = rand() % HIGH;
-	line(w, 0, w, 900);
-	w = rand() % WIDTH;
-	h = rand() % HIGH;
-	line(w, 0, w, 900);
-	w = rand() % WIDTH;
-	h = rand() % HIGH;
-	line(w, 0, w, 900);
-	w = rand() % WIDTH;
-	h = rand() % HIGH;
-	line(w, 0, w, 900);
-	w = rand() % WIDTH;
-	h = rand() % HIGH;
-	line(w, 0, w, 900);
+	int t = 6;
+	while (t-- > 0) {
+		int w = rand() % WIDTH;
+		int h = rand() % HIGH;
+		line(w, 0, w, 900);
+	}
 }
 
 void dialogue(IMAGE I[2], LPCTSTR str) {

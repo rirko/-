@@ -46,17 +46,17 @@ void show()
 	if (kb_x || mp < maxmp * 0.3) {
 		setlinecolor(WHITE);
 		if (mp <= 0)setlinecolor(BLUE);
-		float mparc = (mp / (float)maxmp) * pi * 2;
+		float mparc = (mp / (float)maxmp) * PI * 2;
 		for (int i = 0; i < 10; i++) {
-			arc(player.x - 70 - i, player.y - 70 - i, player.x + 70 + i, player.y + 70 + i, 0.5 * pi, mparc + 0.5 * pi);
+			arc(player.x - 70 - i, player.y - 70 - i, player.x + 70 + i, player.y + 70 + i, 0.5 * PI, mparc + 0.5 * PI);
 		}
 	}
 	if (kb_x || hp < maxhp * 0.6 || hp < hpup) {
 		setlinecolor(LIGHTGREEN);
 		if (hpup > hp)setlinecolor(RED);
-		float hparc = (hp / (float)maxhp) * pi * 2;
+		float hparc = (hp / (float)maxhp) * PI * 2;
 		for (int i = 0; i < 10; i++) {
-			arc(player.x - 80 - i, player.y - 80 - i, player.x + 80 + i, player.y + 80 + i, 0.5 * pi, hparc + 0.5 * pi);
+			arc(player.x - 80 - i, player.y - 80 - i, player.x + 80 + i, player.y + 80 + i, 0.5 * PI, hparc + 0.5 * PI);
 		}
 	}
 	if (kb_shift == 1)	animesprite(0, player.x, player.y);//显示旋转圈
@@ -93,7 +93,7 @@ void show()
 	setfillcolor(BLACK);
 	solidcircle(30, 30, 30);
 	setfillcolor(RED);
-	solidpie(5, 5, 55, 55, pi / 2, pi / 2 - (1 - leveltime / 21600) * 2 * pi);
+	solidpie(5, 5, 55, 55, PI / 2, PI / 2 - (1 - leveltime / 21600) * 2 * PI);
 	setfillcolor(BLACK);
 	solidcircle(30, 30, 15);
 
@@ -107,25 +107,25 @@ void show()
 		if (lt % 2 == 1)outtextxy(player.x - 65, player.y + 60, _T("Intensify Chance"));
 		setlinecolor(RED);
 		for (int i = 0; i < 10; i++) {
-			arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qte) * pi / 180, 1.5 * pi);
+			arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qte) * PI / 180, 1.5 * PI);
 		}
 		setlinecolor(GREEN);
 		if (qte > qterand[0] && qte <= qterand[0] + 45)
 			for (int i = 0; i < 10; i++)
-				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qte) * pi / 180, (270 - qterand[0]) * pi / 180);
+				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qte) * PI / 180, (270 - qterand[0]) * PI / 180);
 
 		if (qte > qterand[0] && qte > qterand[0] + 45)
 			for (int i = 0; i < 10; i++)
-				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qterand[0] - 45) * pi / 180, (270 - qterand[0]) * pi / 180);
+				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qterand[0] - 45) * PI / 180, (270 - qterand[0]) * PI / 180);
 
 		setlinecolor(YELLOW);
 		if (qte > qterand[1] && qte <= qterand[1] + 45)
 			for (int i = 0; i < 10; i++)
-				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qte) * pi / 180, (270 - qterand[1]) * pi / 180);
+				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qte) * PI / 180, (270 - qterand[1]) * PI / 180);
 
 		if (qte > qterand[1] && qte > qterand[1] + 45)
 			for (int i = 0; i < 10; i++)
-				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qterand[1] - 45) * pi / 180, (270 - qterand[1]) * pi / 180);
+				arc(object[1].x - 150 - i, object[1].y - 150 - i, object[1].x + 150 + i, object[1].y + 150 + i, (270 - qterand[1] - 45) * PI / 180, (270 - qterand[1]) * PI / 180);
 
 	}
 
@@ -184,7 +184,7 @@ void updateWithInput()
 	if (kb_z == 1 && shootclock < 0&&!kb_x) {//发射子弹
 		mp = mp - 20;
 		if (kb_shift) {
-			int ang = atan((object[1].y - player.y) / (object[1].x - player.x)) * 180 / pi;
+			int ang = atan((object[1].y - player.y) / (object[1].x - player.x)) * 180 / PI;
 			if ((object[1].x - player.x) < 0)ang = ang + 180;
 			create_bullet(-1, 40, player.x - 20, player.y, ang, 20, 2, WHITE, 0);
 			create_bullet(-1, 40, player.x + 20, player.y, ang, 20, 2, WHITE, 0);
@@ -192,11 +192,11 @@ void updateWithInput()
 		else {
 			create_bullet(-1, 40, player.x + 30, player.y, 270, 10, 2, WHITE, 0);
 			create_bullet(-1, 40, player.x - 30, player.y, 270, 10, 2, WHITE, 0);
-			int ang = atan((object[1].y - player.y) / (object[1].x - player.x + 50)) * 180 / pi;
+			int ang = atan((object[1].y - player.y) / (object[1].x - player.x + 50)) * 180 / PI;
 			if ((object[1].x - player.x + 50) < 0)ang = ang + 180;
 			create_bullet(-1, 40, player.x - 50, player.y, ang, 20, 2, WHITE, 0);
 
-			ang = atan((object[1].y - player.y) / (object[1].x - player.x - 50)) * 180 / pi;
+			ang = atan((object[1].y - player.y) / (object[1].x - player.x - 50)) * 180 / PI;
 			if ((object[1].x - player.x - 50) < 0)ang = ang + 180;
 			create_bullet(-1, 40, player.x + 50, player.y, ang, 20, 2, WHITE, 0);
 		}
@@ -259,21 +259,21 @@ void updateWithoutInput_after()
 	int i;//子弹时钟判定
 	for (i = 0; i <= bulno; i++) {
 		if (bullet[i].clock[1] == 0) {
-			int ang = atan((player.y - bullet[i].y) / (player.x - bullet[i].x)) * 180 / pi;
+			int ang = atan((player.y - bullet[i].y) / (player.x - bullet[i].x)) * 180 / PI;
 			if ((player.x - bullet[i].x) < 0)ang = ang + 180;
 			velocity_bul(i, bullet[i].velocity, ang);
 		}
 		if (bullet[i].clock[2] == 0) {
-			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate /*+2*/, bullet[i].Vangel + 90);
+			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate /*+2*/, bullet[i].Vangle + 90);
 		}
 		if (bullet[i].clock[3] == 0) {
-			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate /** 0.5*/, bullet[i].Vangel - 90);
+			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate /** 0.5*/, bullet[i].Vangle - 90);
 		}
 		if (bullet[i].clock[4] == 0) {
-			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate /** 0.5*/, bullet[i].Vangel + 90);
+			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate /** 0.5*/, bullet[i].Vangle + 90);
 		}
 		if (bullet[i].clock[5] == 0) {
-			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate/*+1*/, bullet[i].Vangel);
+			velocity_bul(i, bullet[i].velocity + bullet[i].tempdate/*+1*/, bullet[i].Vangle);
 		}
 	}
 
@@ -884,7 +884,7 @@ void level3() {
 					int x, y;
 					x = 200 * cos(i) + player.x;
 					y = 200 * sin(i) + player.y;
-					int ang = atan((player.y - y) / (player.x - x)) * 180 / pi;
+					int ang = atan((player.y - y) / (player.x - x)) * 180 / PI;
 					if ((player.x - x) < 0)ang = ang + 180;
 					create_bullet(3, 3, x, y, ang + 60 * (sin(lt) + 1.2), 10, 5, 0xfffa57, 0);
 
@@ -914,7 +914,7 @@ void level3() {
 					int x, y;
 					x = 200 * cos(i) + player.x;
 					y = 200 * sin(i) + player.y;
-					int ang = atan((player.y - y) / (player.x - x)) * 180 / pi;
+					int ang = atan((player.y - y) / (player.x - x)) * 180 / PI;
 					if ((player.x - x) < 0)ang = ang + 180;
 					create_bullet(5, 3, x, y, ang + 60 * (sin(lt) + 1.2), 10, 5, 0xfffa57, 0);
 
@@ -936,7 +936,7 @@ void level3() {
 			}
 			if (lt == 170) {
 				object[1].velocity = 2;
-				object[1].Vangel = 45;
+				object[1].Vangle = 45;
 			}
 			if (lt > 170 && lt < 210) {
 				setlinecolor(WHITE);
@@ -944,38 +944,38 @@ void level3() {
 				FlushBatchDraw();
 				if (object[1].x >= 800) {
 					object[1].x = 800;
-					if ((int)object[1].Vangel % 360 < 180)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 < 180)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if (object[1].x <= 0) {
 					object[1].x <= 0;
-					if ((int)object[1].Vangel % 360 > 180)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 > 180)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if (object[1].y >= 900) {
 					object[1].y = 900;
-					if ((int)object[1].Vangel % 360 > 90)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 > 90)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if (object[1].y <= 0) {
 					object[1].y <= 0;
-					if ((int)object[1].Vangel % 360 > 270)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 > 270)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if ((int)leveltime % 1 == 0) {
 					i += 1;
 					int x, y;
 					x = 200 * cos(i) + object[1].x;
 					y = 200 * sin(i) + object[1].y;
-					int ang = atan((object[1].y - y) / (object[1].x - x)) * 180 / pi;
+					int ang = atan((object[1].y - y) / (object[1].x - x)) * 180 / PI;
 					if ((object[1].x - x) < 0)ang = ang + 180;
 					create_bullet(5, 3, x, y, ang + 60 * (sin(lt) + 0.5), 10, 5, WHITE, 0);
 
@@ -1141,14 +1141,14 @@ void level4() {
 					if ((int)leveltime % 10 == 0) {
 						t += 17;
 						for (i = 0; i < 3; i++) {
-							int ang = atan((player.y-200) / (player.x-200)) * 180 / pi;
+							int ang = atan((player.y-200) / (player.x-200)) * 180 / PI;
 							if (player.x - 200 < 0)ang = ang + 180;
 							create_bullet(0, 5, 200, 200, ang, 15, 5, WHITE, 0);
 							create_bullet(0, 5, 200, 200, ang + 20, 10, 5, WHITE, 0);
 							create_bullet(0, 5, 200, 200, ang - 20, 10, 5, WHITE, 0);
 						}
 						for (i = 0; i < 3; i++) {
-							int ang = atan((player.y-200) / (player.x-600)) * 180 / pi;
+							int ang = atan((player.y-200) / (player.x-600)) * 180 / PI;
 							if(player.x - 600<0)ang = ang + 180;
 							create_bullet(0, 5, 600, 200, ang,15, 5, WHITE, 0);
 							create_bullet(0, 5, 600, 200, ang + 20, 10, 5, WHITE, 0);
@@ -1218,7 +1218,7 @@ void level4() {
 					int x, y;
 					x = 200 * cos(i) + player.x;
 					y = 200 * sin(i) + player.y;
-					int ang = atan((player.y - y) / (player.x - x)) * 180 / pi;
+					int ang = atan((player.y - y) / (player.x - x)) * 180 / PI;
 					if ((player.x - x) < 0)ang = ang + 180;
 					create_bullet(5, 3, x, y, ang + 60 * (sin(lt) + 1.2), 10, 5, 0xfffa57, 0);
 
@@ -1240,7 +1240,7 @@ void level4() {
 			}
 			if (lt == 170) {
 				object[1].velocity = 2;
-				object[1].Vangel = 45;
+				object[1].Vangle = 45;
 			}
 			if (lt > 170 && lt < 210) {
 				setlinecolor(WHITE);
@@ -1248,38 +1248,38 @@ void level4() {
 				FlushBatchDraw();
 				if (object[1].x >= 800) {
 					object[1].x = 800;
-					if ((int)object[1].Vangel % 360 < 180)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 < 180)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if (object[1].x <= 0) {
 					object[1].x <= 0;
-					if ((int)object[1].Vangel % 360 > 180)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 > 180)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if (object[1].y >= 900) {
 					object[1].y = 900;
-					if ((int)object[1].Vangel % 360 > 90)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 > 90)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if (object[1].y <= 0) {
 					object[1].y <= 0;
-					if ((int)object[1].Vangel % 360 > 270)
-						object[1].Vangel += 90;
+					if ((int)object[1].Vangle % 360 > 270)
+						object[1].Vangle += 90;
 					else
-						object[1].Vangel += 270;
+						object[1].Vangle += 270;
 				}
 				if ((int)leveltime % 1 == 0) {
 					i += 1;
 					int x, y;
 					x = 200 * cos(i) + object[1].x;
 					y = 200 * sin(i) + object[1].y;
-					int ang = atan((object[1].y - y) / (object[1].x - x)) * 180 / pi;
+					int ang = atan((object[1].y - y) / (object[1].x - x)) * 180 / PI;
 					if ((object[1].x - x) < 0)ang = ang + 180;
 					create_bullet(5, 3, x, y, ang + 60 * (sin(lt) + 0.5), 10, 5, WHITE, 0);
 

@@ -60,7 +60,7 @@ int time_used = 0;
 time_t nowtime = 0;
 int qte = 0;//qte计时器
 int qterand[2] = {0};//qte随机
-Object vedio[10];
+Object video[10];
 
 Object object[100];//初始化总物体个数
 int objno = 0;//object number缩写，表示程序中除player外的实体数
