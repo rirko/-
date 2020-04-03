@@ -46,14 +46,32 @@ void Debug()
 void very_startup() 
 {
 	int zoomrate = 1;
-	printf("写在前面：\n\n首先，感谢您对本游戏的兴趣与支持！\n\n当前游戏版本为v.demo.1，剧情与关卡仅更新到第四章\n以及技能“居合斩”\n\n居合斩的使用方法为：按住【X】键时开始蓄力，蓄力完成后当子弹触碰到蓄力圈的瞬间按下【Z】键发动\n发动成功后可大幅减少所受伤害及回复全部体力\n");
+	int ttf=0;
+	printf("写在前面：\n\n首先，感谢您对本游戏的兴趣与支持！\n\n当前游戏版本为v.demo.1，剧情与关卡仅更新到第四章\n以及技能“居合斩”\n\n居合斩的使用方法为：按住【X】键时开始蓄力，蓄力完成后当子弹触碰到蓄力圈的瞬间按下【Z】键发动\n发动成功后可大幅减少所受伤害及回复全部耐力\n");
 	printf("\n按下鼠标左键或【esc】以使用暂停功能"); 
-	printf("\n本游戏官方网站为：http://doyagame.rthe.net/ \n");
-	printf("\n游玩前请确保已安装游戏目录下字体文件\n我是本游戏的制作者RIRKO，希望大家玩的愉快");
+	printf("\n本游戏官方网站为：http://doyagame.rthe.net/ \n源代码GIT：https://github.com/rirko/- \n制作者QQ：1250104511，如有bug请立刻与我激情对线，谢谢！\n");
+	printf("\n游玩前请确保已安装游戏目录下字体文件！！！！！！！！！！！！！\n我是本游戏的制作者RIRKO，希望大家玩的愉快");
+	printf("\n\n特别鸣谢：剧本作者：石子悦\n");
 	printf("\n选择分辨率：\n1.800x900(推荐)\n2.720x810\n3.640x720\n4.560x630\n5.自定义\n");
 	scanf_s("%d", &zoomrate);
 	printf("\n选择难易度【最低为1】\n难易度将决定您在游戏中受到伤害的数值及得分，过低及过高的难易度将破坏您的游戏体验【推荐设置为4】\n请谨慎选择：");
 	scanf_s("%d", &hard);
+	system("cls");
+	printf("真的安装好字体文件了吗？是的请扣1：");
+	scanf_s("%d", &ttf);
+	if (ttf != 1) {
+		printf("先去安装字体文件，gkd，右上角");
+		while (true)
+		{}
+	}
+	printf("真的吗？ 要不要再确认一下？字体文件在游戏安装路径下，名称为问藏书房.tff，如果没有安装会导致bug\n确认请扣1：");
+	scanf_s("%d", &ttf);
+	if (ttf != 1) {
+		printf("先去安装字体文件，gkd，右上角");
+		while (true)
+		{
+		}
+	}
 	if (hard < 1)hard = 4;
 	switch (zoomrate)//界面初始化
 	{
@@ -83,13 +101,17 @@ void very_startup()
 		break;
 
 	case 5:
-		printf("输入长度与宽度，用空格隔开（单位：像素）");
+		printf("输入宽度与长度，用空格隔开（单位：像素）(建议宽长比8：9)");
 		scanf_s("%d %d", &windowwidth, &windowhigh);
 		initgraph(windowwidth, windowhigh);
 		setaspectratio(windowwidth / 800.0, windowhigh / 900.0);
 		break;
 
 	default:
+		windowwidth = 800;
+		windowhigh = 900;
+		initgraph(windowwidth, windowhigh);
+		setaspectratio(1, 1);
 		break;
 	}
 	DMG = hard * 50;
@@ -124,7 +146,7 @@ void very_startup()
 int main()
 {
 	very_startup();
-	
+
 	startanime();
 	startgame();
 	dialogue_1();

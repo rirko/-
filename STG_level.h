@@ -371,6 +371,7 @@ void level1() {
 				dialogue(crarcter_kami, _T("阿斯克勒皮俄斯：必要时刻不要吝啬耐力值，按下【shift】进入精细模式"));
 				dialogue(crarcter_kami, _T("阿斯克勒皮俄斯：但是请留意耐力计量表，当耐力清空时将动弹不得"));
 				dialogue(crarcter_kami, _T("阿斯克勒皮俄斯：按下【X】键可以近距离观察体力与耐力计量表"));
+				dialogue(crarcter_kami, _T("阿斯克勒皮俄斯：但注意，观察的时候不可以移动和攻击"));
 
 			}
 			if (lt > 25 && lt < 40) {
@@ -408,6 +409,7 @@ void level1() {
 					dialogue(crarcter_kami, _T("阿斯克勒皮俄斯：顺便一提，黄色的位置是【耐力加速回复】的强化"));
 					dialogue(crarcter_kami, _T("阿斯克勒皮俄斯：选择哪一个要凭你自己权衡利弊了"));
 				}
+				Sleep(200);
 
 			}
 			if (leveltime == 3600) {
