@@ -490,7 +490,7 @@ void chooseskill() {//1：体力回复量上升，2：突破耐力极限，3：体力增强·极意，4：
 		cleardevice();
 		if (MouseHit()) mousemsg = GetMouseMsg();
 		for (i = 0; i < 3; i++) {
-			if ((mousemsg.y > ((350+i*100) / (900 / windowhigh))) && (mousemsg.y < ((390 + i * 100) / (900 / windowhigh)))) {
+			if ((mousemsg.y > ((350+i*100) * ((float)windowhigh/900))) && (mousemsg.y < ((390 + i * 100) * ((float)windowhigh / 900)))) {
 				setfillcolor(WHITE);
 				solidrectangle(0, (350 + i * 100), 800, (389 + i * 100));
 				settextcolor(WHITE);
