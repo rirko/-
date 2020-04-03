@@ -102,12 +102,12 @@ void Vmove()
 		//if (object[i].isused == 0)
 			//break;
 
-		object[i].x = object[i].x + object[i].velocity * cos((object[i].Vangel / 180) * pi);
-		object[i].y = object[i].y + object[i].velocity * sin((object[i].Vangel / 180) * pi);
+		object[i].x = object[i].x + object[i].velocity * cos((object[i].Vangle / 180) * PI);
+		object[i].y = object[i].y + object[i].velocity * sin((object[i].Vangle / 180) * PI);
 	}for (i = 0; i <= bulno; i++) {
 
-		bullet[i].x = bullet[i].x + bullet[i].velocity * cos((bullet[i].Vangel / 180) * pi);
-		bullet[i].y = bullet[i].y + bullet[i].velocity * sin((bullet[i].Vangel / 180) * pi);
+		bullet[i].x = bullet[i].x + bullet[i].velocity * cos((bullet[i].Vangle / 180) * PI);
+		bullet[i].y = bullet[i].y + bullet[i].velocity * sin((bullet[i].Vangle / 180) * PI);
 	}
 }
 
@@ -162,14 +162,14 @@ void imageFresh()
 						setfillcolor(LIGHTGRAY);
 						setlinecolor(LIGHTGRAY);
 						POINT pts[8] = {
-						{bullet[i].x + cos((bullet[i].Vangel - 90) / 180 * pi) * bullet[i].hitbox ,
-						 bullet[i].y + sin((bullet[i].Vangel - 90) / 180 * pi) * bullet[i].hitbox} ,
-						{bullet[i].x + 2 * cos(bullet[i].Vangel / 180 * pi) * bullet[i].hitbox ,
-						 bullet[i].y + 2 * sin(bullet[i].Vangel / 180 * pi) * bullet[i].hitbox },
-						{bullet[i].x + cos((bullet[i].Vangel + 90) / 180 * pi) * bullet[i].hitbox,
-						 bullet[i].y + sin((bullet[i].Vangel + 90) / 180 * pi) * bullet[i].hitbox},
-						{bullet[i].x - 4 * cos(bullet[i].Vangel / 180 * pi) * bullet[i].hitbox ,
-						 bullet[i].y - 4 * sin(bullet[i].Vangel / 180 * pi) * bullet[i].hitbox} ,
+						{bullet[i].x + cos((bullet[i].Vangle - 90) / 180 * PI) * bullet[i].hitbox ,
+						 bullet[i].y + sin((bullet[i].Vangle - 90) / 180 * PI) * bullet[i].hitbox} ,
+						{bullet[i].x + 2 * cos(bullet[i].Vangle / 180 * PI) * bullet[i].hitbox ,
+						 bullet[i].y + 2 * sin(bullet[i].Vangle / 180 * PI) * bullet[i].hitbox },
+						{bullet[i].x + cos((bullet[i].Vangle + 90) / 180 * PI) * bullet[i].hitbox,
+						 bullet[i].y + sin((bullet[i].Vangle + 90) / 180 * PI) * bullet[i].hitbox},
+						{bullet[i].x - 4 * cos(bullet[i].Vangle / 180 * PI) * bullet[i].hitbox ,
+						 bullet[i].y - 4 * sin(bullet[i].Vangle / 180 * PI) * bullet[i].hitbox} ,
 						};
 						solidpolygon(pts, 4);
 					}
@@ -190,34 +190,34 @@ void imageFresh()
 				}
 				if (bullet[i].type == 2) {
 					moveto(bullet[i].x, bullet[i].y);
-					linerel(-cos((bullet[i].Vangel/180)*pi) * bullet[i].velocity * 10, -sin((bullet[i].Vangel / 180) * pi) * bullet[i].velocity * 10);
+					linerel(-cos((bullet[i].Vangle/180)*PI) * bullet[i].velocity * 10, -sin((bullet[i].Vangle / 180) * PI) * bullet[i].velocity * 10);
 					solidcircle(bullet[i].x, bullet[i].y, bullet[i].hitbox);
 				}
 				if (bullet[i].type == 3) {
 					POINT pts[6] = {
-						{bullet[i].x + cos((bullet[i].Vangel - 90) / 180 * pi) * (bullet[i].hitbox + 1) ,
-						 bullet[i].y + sin((bullet[i].Vangel - 90) / 180 * pi) * (bullet[i].hitbox + 1)} ,
-						{bullet[i].x + 2 * cos(bullet[i].Vangel / 180 * pi) * (bullet[i].hitbox + 1) ,
-						 bullet[i].y + 2 * sin(bullet[i].Vangel / 180 * pi) * (bullet[i].hitbox + 1) },
-						{bullet[i].x + cos((bullet[i].Vangel + 90) / 180 * pi) * (bullet[i].hitbox + 1),
-						 bullet[i].y + sin((bullet[i].Vangel + 90) / 180 * pi) * (bullet[i].hitbox + 1)},
+						{bullet[i].x + cos((bullet[i].Vangle - 90) / 180 * PI) * (bullet[i].hitbox + 1) ,
+						 bullet[i].y + sin((bullet[i].Vangle - 90) / 180 * PI) * (bullet[i].hitbox + 1)} ,
+						{bullet[i].x + 2 * cos(bullet[i].Vangle / 180 * PI) * (bullet[i].hitbox + 1) ,
+						 bullet[i].y + 2 * sin(bullet[i].Vangle / 180 * PI) * (bullet[i].hitbox + 1) },
+						{bullet[i].x + cos((bullet[i].Vangle + 90) / 180 * PI) * (bullet[i].hitbox + 1),
+						 bullet[i].y + sin((bullet[i].Vangle + 90) / 180 * PI) * (bullet[i].hitbox + 1)},
 					};
 					solidpolygon(pts, 3);
 				}
 				if (bullet[i].type == 4) {
-					solidpie(bullet[i].x - bullet[i].hitbox * 2, bullet[i].y - bullet[i].hitbox * 2, bullet[i].x + bullet[i].hitbox * 2, bullet[i].y + bullet[i].hitbox * 2, -bullet[i].Vangel / 180 * pi - 1.5, -bullet[i].Vangel / 180 * pi + 1.5);
+					solidpie(bullet[i].x - bullet[i].hitbox * 2, bullet[i].y - bullet[i].hitbox * 2, bullet[i].x + bullet[i].hitbox * 2, bullet[i].y + bullet[i].hitbox * 2, -bullet[i].Vangle / 180 * PI - 1.5, -bullet[i].Vangle / 180 * PI + 1.5);
 					solidcircle(bullet[i].x, bullet[i].y, bullet[i].hitbox);
 				}
 				if (bullet[i].type == 5) {
 					POINT pts[8] = {
-						{bullet[i].x + cos((bullet[i].Vangel - 90) / 180 * pi) * (bullet[i].hitbox + 1) ,
-						 bullet[i].y + sin((bullet[i].Vangel - 90) / 180 * pi) * (bullet[i].hitbox + 1)} ,
-						{bullet[i].x + 2*cos(bullet[i].Vangel / 180 * pi) * (bullet[i].hitbox + 1) ,
-						 bullet[i].y + 2*sin(bullet[i].Vangel / 180 * pi) * (bullet[i].hitbox + 1) },
-						{bullet[i].x + cos((bullet[i].Vangel + 90) / 180 * pi) * (bullet[i].hitbox + 1),
-						 bullet[i].y + sin((bullet[i].Vangel + 90 )/ 180 * pi) * (bullet[i].hitbox + 1)},
-						{bullet[i].x - 4 * cos(bullet[i].Vangel / 180 * pi) * (bullet[i].hitbox + 1) ,
-						 bullet[i].y - 4 * sin(bullet[i].Vangel / 180 * pi) * (bullet[i].hitbox + 1)} ,
+						{bullet[i].x + cos((bullet[i].Vangle - 90) / 180 * PI) * (bullet[i].hitbox + 1) ,
+						 bullet[i].y + sin((bullet[i].Vangle - 90) / 180 * PI) * (bullet[i].hitbox + 1)} ,
+						{bullet[i].x + 2*cos(bullet[i].Vangle / 180 * PI) * (bullet[i].hitbox + 1) ,
+						 bullet[i].y + 2*sin(bullet[i].Vangle / 180 * PI) * (bullet[i].hitbox + 1) },
+						{bullet[i].x + cos((bullet[i].Vangle + 90) / 180 * PI) * (bullet[i].hitbox + 1),
+						 bullet[i].y + sin((bullet[i].Vangle + 90 )/ 180 * PI) * (bullet[i].hitbox + 1)},
+						{bullet[i].x - 4 * cos(bullet[i].Vangle / 180 * PI) * (bullet[i].hitbox + 1) ,
+						 bullet[i].y - 4 * sin(bullet[i].Vangle / 180 * PI) * (bullet[i].hitbox + 1)} ,
 					};
 					solidpolygon(pts, 4);
 				}

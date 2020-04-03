@@ -120,11 +120,11 @@ void very_startup()
 	loadimage(&TITLE[0], _T("image\\title\\title.png"));
 	loadimage(&TITLE[1], _T("image\\title\\title3.png"));
 	loadimage(&white, _T("image\\white.png"), WIDTH, HIGH);
-	vedio[0].sprite.img[0] = &TITLE[0];
-	vedio[0].sprite.strip = 10;
-	vedio[0].x = WIDTH / 2;
-	vedio[0].y = HIGH / 2;
-	vedio[0].sprite.speed = 2;
+	video[0].sprite.img[0] = &TITLE[0];
+	video[0].sprite.strip = 10;
+	video[0].x = WIDTH / 2;
+	video[0].y = HIGH / 2;
+	video[0].sprite.speed = 2;
 
 	loadimage(&crarcter_doctor[0], _T("image\\crarcter\\doctor.png"));
 	loadimage(&crarcter_doctor[1], _T("image\\crarcter\\doctor_mask.png"));

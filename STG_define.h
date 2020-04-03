@@ -10,19 +10,18 @@
 //============================================================================================================
 //定义区////定义区////定义区////定义区////定义区////定义区////定义区////定义区////定义区////定义区////定义区//
 //============================================================================================================
-#define pi 3.14159
+#define PI 3.14159
 #define HIGH 900
 #define WIDTH 800
 
 //定义函数
 
-#define min(x,y) (x)<(y)?(x):(y)//取最小值
-#define max(x,y) (x)>(y)?(x):(y)//取最大值
+#define min(x, y) ((x) < (y) ? (x) : (y))//取最小值
+#define max(x, y) ((x) > (y) ? (x) : (y))//取最大值
 
 //#define 问藏书房 黑体
 //精灵结构体
-#define Sprite struct sprite 
-Sprite
+typedef struct
 {
 	int speed = 1;//动画速度
 	int clock = speed;//帧计时器
@@ -31,33 +30,32 @@ Sprite
 	IMAGE* img[2];//贴图与遮罩层对应的地址指针
 	int strip = 8;//总帧数
 	int frame = 1;//当前帧数
-};
+} Sprite;
 
 //物体结构体
-#define Object struct object
-Object
+typedef struct
 {
 	int NO = -1;
 	int isused = 0;//实体启用开关
 	float x = 0.0;//物体x坐标
 	float y = 0.0;//物体y坐标
 	double velocity = 0.0;//物体速度
-	double Vangel = 0.0;//物体运动方向
+	double Vangle = 0.0;//物体运动方向
 	Sprite sprite;//物体所对应的精灵
 	int hitbox = 0;//碰撞盒子
 	int depht = 5;//实体深度
 	int clock[5] = { -1,-1,-1,-1,-1};//旗标
-};
+} Object;
+
 //子弹结构体
-#define Bullet struct bullet
-Bullet
+typedef struct
 {
 	int NO = -1;
 	int isused = 0;//实体启用开关
 	float x = 0.0;//物体x坐标
 	float y = 0.0;//物体y坐标
 	double velocity = 0.0;//物体速度
-	double Vangel = 0.0;//物体运动方向
+	double Vangle = 0.0;//物体运动方向
 	int type = 0;//外观类型：0圆形，1正方形，2直线型，3圆弧型，4扇形，5菱形
 	int group = 0;
 	int hitbox = 0;//碰撞盒子
@@ -65,16 +63,14 @@ Bullet
 	int clock[10] = { -1,-1,-1,-1,-1 };//旗标
 	double tempdate = 0;//用来存储零时数据
 	COLORREF color;
-};
+} Bullet;
+
 //鼠标结构体
-#define Mousepoint struct mousepoint
-Mousepoint
+typedef struct
 {
 	int x = 0,y = 0;
 	IMAGE img[2];
-};
+} Mousepoint;
 
 //定义实体名称
 #define player object[0]//将玩家定义为0号实体
-
-

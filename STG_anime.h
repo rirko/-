@@ -34,7 +34,7 @@ void startanime() {
 			putimage(0, 0, &white);
 			FlushBatchDraw();
 			Sleep(1000);
-			vedio[0].sprite.img[0] = &TITLE[1];
+			video[0].sprite.img[0] = &TITLE[1];
 		}
 		if (i == 58) {
 			Sleep(3000);
@@ -60,32 +60,28 @@ void startanime() {
 	while (true)
 	{
 		if ((GetAsyncKeyState(VK_SPACE) & 0x8000))break;//空格跳过
-		int w = rand()%WIDTH-200;
-		int h = rand()%HIGH-200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, &blood[0], SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, &blood[0], SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, &blood[0], SRCPAINT);
-		if (i > 70 && i < 250) {
+		int t = 3;
+		while (t-- > 0) {
+			int w = rand() % WIDTH - 200;
+			int h = rand() % HIGH - 200;
+			putimage(w, h, &blood[1], SRCAND);
+			putimage(w, h, &blood[0], SRCPAINT);
+		}
 
+		if (i > 70 && i < 250) {
 			settextstyle(30, 0, _T("问藏书房"));
 			outtextxy(rand() % 2, 480+ rand() % 2, _T("“——当医生的大姐姐”"));
 		}
-		if(i>120&&i<250)
+
+		if (i > 120 && i < 250)
 			outtextxy(rand() % 2, 510+ rand() % 2, _T("“——你的面具好可怕啊”"));
 		if (i > 160 && i < 250)
 			outtextxy(rand() % 2, 540+ rand() % 2, _T("“——为什么要戴这么可怕的面具呢？”"));
-		if(i>310&&i<450)
+		if (i > 310 && i < 450)
 			outtextxy(rand() % 2, 480+ rand() % 2, _T("......是啊"));
-		if(i>360&&i<450)
+		if (i > 360 && i < 450)
 			outtextxy(rand() % 2, 510+ rand() % 2, _T("因为，我希望"));
-		if(i>400&&i<500)
+		if (i > 400 && i < 500)
 			outtextxy(rand() % 2, 540+ rand() % 2, _T("往后，不会再有需要后人戴上这个面具的时刻"));
 		if (i == 600)break;
 		i++;
@@ -94,19 +90,16 @@ void startanime() {
 	}
 	i = 0;
 	Sleep(100);
-	loadimage(&blood[0], _T("image\\white.png"),400,400);
+	loadimage(&blood[0], _T("image\\white.png"), 400, 400);
 	while (true)
 	{
 		if ((GetAsyncKeyState(VK_SPACE) & 0x8000))break;//空格跳过
-		int w = rand() % WIDTH - 200;
-		int h = rand() % HIGH - 200;
-		putimage(w, h, &blood[0]);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[0]);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[0]);
+		int t = 3;
+		while (t-- > 0) {
+			int w = rand() % WIDTH - 200;
+			int h = rand() % HIGH - 200;
+			putimage(w, h, &blood[0]);
+		}
 
 		if (i > 60) {
 			settextstyle(300, 0, _T("黑体"));
@@ -149,18 +142,14 @@ void startanime() {
 
 	while (true)
 	{
-		int w = rand() % WIDTH - 200;
-		int h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &white, 400, 400, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &white, 400, 400, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &white, 400, 400, SRCPAINT);
+		int t = 3;
+		while (t-- > 0) {
+			int w = rand() % WIDTH - 200;
+			int h = rand() % HIGH - 200;
+			putimage(w, h, &blood[1], SRCAND);
+			putimage(w, h, w, h, &white, 400, 400, SRCPAINT);
+		}
+
 		i++;
 		if (i == 30)break;
 		FlushBatchDraw();
@@ -169,22 +158,14 @@ void startanime() {
 	i = 0;
 	while (true)
 	{
-		int w = rand() % WIDTH - 200;
-		int h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400,  &white, w, h, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400, &white, w, h, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400, &white, w, h, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400, &white, w, h, SRCPAINT);
+		int t = 4;
+		while (t-- > 0) {
+			int w = rand() % WIDTH - 200;
+			int h = rand() % HIGH - 200;
+			putimage(w, h, &blood[1], SRCAND);
+			putimage(w, h, 400, 400, &white, w, h, SRCPAINT);
+		}
+
 		FlushBatchDraw();
 		blanktime();
 		i++;
@@ -197,20 +178,16 @@ void startanime() {
 	i = 0;
 	while (true)
 	{
-		int w = (rand() % 500)-200;
-		int h = (rand() % 750)-200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-		w = (rand() % 500) - 200;
-		h = (rand() % 750) - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-		w = (rand() % 500) - 200;
-		h = (rand() % 750) - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-		w = (rand() % 500) - 200;
-		h = (rand() % 750) - 200;
+		int t = 3;
+		while (t-- > 0) {
+			int w = (rand() % 500) - 200;
+			int h = (rand() % 750) - 200;
+			putimage(w, h, &blood[1], SRCAND);
+			putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
+		}
+
+		int w = (rand() % 500) - 200;
+		int h = (rand() % 750) - 200;
 		putimage(w, h, &blood[1], SRCAND);
 		putimage(w, h, 400, 400, &crarcter_doctor[0], w - 70, h - 90, SRCPAINT);
 		FlushBatchDraw();
@@ -221,26 +198,14 @@ void startanime() {
 	i = 0;
 	while (true)
 	{
-		int w = rand() % WIDTH - 200;
-		int h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &start[0], 400, 400, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &start[0], 400, 400, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &start[0], 400, 400, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &start[0], 400, 400, SRCPAINT);
-		w = rand() % WIDTH - 200;
-		h = rand() % HIGH - 200;
-		putimage(w, h, &blood[1], SRCAND);
-		putimage(w, h, w, h, &start[0], 400, 400, SRCPAINT);
+		int t = 5;
+		while (t-- > 0) {
+			int w = rand() % WIDTH - 200;
+			int h = rand() % HIGH - 200;
+			putimage(w, h, &blood[1], SRCAND);
+			putimage(w, h, w, h, &start[0], 400, 400, SRCPAINT);
+		}
+
 		i++;
 		if (i == 10)break;
 		FlushBatchDraw();
@@ -257,48 +222,42 @@ void startgame() {
 		int t = 0;
 		if (MouseHit()) {
 			mousemsg = GetMouseMsg();
-			if (i == 0 && mousemsg.x > 0.3325 * windowwidth && mousemsg.y > 0.85 * windowhigh && mousemsg.x < 0.679 * windowwidth && mousemsg.y < 0.96 * windowhigh) {
+			if (i == 0 && mousemsg.x > 0.3325 * windowwidth && mousemsg.y > 0.85 * windowhigh
+					   && mousemsg.x < 0.679 * windowwidth && mousemsg.y < 0.96 * windowhigh) {
 				loadimage(&start[0], _T("image\\title\\start2.png"));
 				for (i = 0; i < 30; i++) {
 
+					int t_ = 3;
+					while (t_-- > 0) {
+						int w = (rand() % 500) - 200;
+						int h = (rand() % 750) - 200;
+						putimage(w, h, &blood[1], SRCAND);
+						putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
+					}
+
 					int w = (rand() % 500) - 200;
 					int h = (rand() % 750) - 200;
-					putimage(w, h, &blood[1], SRCAND);
-					putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-					w = (rand() % 500) - 200;
-					h = (rand() % 750) - 200;
-					putimage(w, h, &blood[1], SRCAND);
-					putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-					w = (rand() % 500) - 200;
-					h = (rand() % 750) - 200;
-					putimage(w, h, &blood[1], SRCAND);
-					putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-					w = (rand() % 500) - 200;
-					h = (rand() % 750) - 200;
 					putimage(w, h, &blood[1], SRCAND);
 					putimage(w, h, 400, 400, &crarcter_doctor[0], w - 70, h - 90, SRCPAINT);
 					FlushBatchDraw();
 				}
 				i = 1;
 			}
-			if (i == 1 && (mousemsg.x < 0.3325*windowwidth || mousemsg.y < 0.85*windowhigh || mousemsg.x > 0.679*windowwidth || mousemsg.y > 0.96*windowhigh)) {
+			if (i == 1 && (mousemsg.x < 0.3325*windowwidth || mousemsg.y < 0.85*windowhigh
+						|| mousemsg.x > 0.679*windowwidth || mousemsg.y > 0.96*windowhigh)) {
 				loadimage(&start[0], _T("image\\title\\start1.png"));
 				for (i = 0; i < 30; i++) {
 
+					int t_ = 3;
+					while (t_-- > 0) {
+						int w = (rand() % 500) - 200;
+						int h = (rand() % 750) - 200;
+						putimage(w, h, &blood[1], SRCAND);
+						putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
+					}
+
 					int w = (rand() % 500) - 200;
 					int h = (rand() % 750) - 200;
-					putimage(w, h, &blood[1], SRCAND);
-					putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-					w = (rand() % 500) - 200;
-					h = (rand() % 750) - 200;
-					putimage(w, h, &blood[1], SRCAND);
-					putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-					w = (rand() % 500) - 200;
-					h = (rand() % 750) - 200;
-					putimage(w, h, &blood[1], SRCAND);
-					putimage(w, h, 400, 400, &start[0], w, h, SRCPAINT);
-					w = (rand() % 500) - 200;
-					h = (rand() % 750) - 200;
 					putimage(w, h, &blood[1], SRCAND);
 					putimage(w, h, 400, 400, &crarcter_doctor[0], w - 70, h - 90, SRCPAINT);
 					FlushBatchDraw();
@@ -308,15 +267,13 @@ void startgame() {
 			if (mousemsg.uMsg == WM_LBUTTONDOWN && i == 1) {
 				while (true)
 				{
-					int w = rand() % WIDTH;
-					int h = rand() % HIGH;
-					line(w, 0, w, 900);
-					w = rand() % WIDTH;
-					h = rand() % HIGH;
-					line(w, 0, w, 900);
-					w = rand() % WIDTH;
-					h = rand() % HIGH;
-					line(w, 0, w, 900);
+					int t_ = 3;
+					while (t_-- > 0) {
+						int w = rand() % WIDTH;
+						int h = rand() % HIGH;
+						line(w, 0, w, 900);
+					}
+
 					t++;
 					FlushBatchDraw();
 					if (t == 400) {
